@@ -1,5 +1,7 @@
 require('plugins')
 require('config/dashboard')
+require('config/auto-cmp')
+require('config/lsp')
 
 
 vim.cmd([[

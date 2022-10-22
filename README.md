@@ -29,3 +29,26 @@ To check NeoVim version just run the command: `nvim --version`
 ```shell
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
+
+### Python environment
+
+To apply static type checking for Python it's necessary to install [Pyright](https://pypi.org/project/pyright/) in your virtual environment
+
+```shell
+python -m pip install pyright
+```
+
+
+## Features
+
+- **Autocomplete is called automatically** when you run writing the code. To select the option just use up/down arrows + Enter
+
+- **Go to definition:** `g` + `d`
+
+- **Go to references:** `g` + `r`
+
+- **Open documentation:** `Shift` + `k`. To jump into the documentation window just press again `Shift` + `k` (to close the documentation window call `q`)
+
+- **Check all issues in the line:** `Space` + `e`. To jump into the issues window just press again `Space` + `e` (to close the documentation window call `q`)
+
+- **Rename a variable:** `Space` + `r` + `n`. Then write a new name and press `Enter`

@@ -27,13 +27,13 @@ db.custom_header = {
 
 db.custom_center = {
     {
-        icon = '\u{1F5CE} ',
+        icon = '\u{2719} ',
         desc = 'New file                    ',
         shortcut = 'NULL',
         action = ':new',
     },
     { 
-        icon = '\u{26D2} ',
+        icon = '\u{23FB} ',
         desc = 'Quit                        ',
         shortcut = 'NULL',
         action = ':q',

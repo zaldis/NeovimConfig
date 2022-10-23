@@ -2,6 +2,7 @@ require('plugins')
 require('config/dashboard')
 require('config/auto-cmp')
 require('config/lsp')
+require('config/telescope')
 
 
 vim.cmd([[

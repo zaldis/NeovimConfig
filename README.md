@@ -17,6 +17,7 @@ To check NeoVim version just run the command: `nvim --version`
 
 1. Check that folder `~/.config/` exists or create new one
 2. Copy `nvim` file to the `~/.config/` folder
+3. Install [ripgrep](https://github.com/BurntSushi/ripgrep) for the filtering tools
 
 ### Install Plugins
 
@@ -52,3 +53,9 @@ python -m pip install pyright
 - **Check all issues in the line:** `Space` + `e`. To jump into the issues window just press again `Space` + `e` (to close the documentation window call `q`)
 
 - **Rename a variable:** `Space` + `r` + `n`. Then write a new name and press `Enter`
+
+- **Searching by file:** `f` + `f`. Then enter the file pattern
+
+- **Searching by content:** `f` + `g`. Then enter the content pattern
+
+- **Searching by Nvim docs:** `f` + `h`. Then enter doc's topic

@@ -10,6 +10,12 @@ return require('packer').startup(
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
 
+    -- Finders
+    use {
+  	'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  	requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     use 'glepnir/dashboard-nvim' -- Nice dashboard
 
     -- Themes

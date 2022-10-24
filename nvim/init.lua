@@ -3,6 +3,7 @@ require('config/dashboard')
 require('config/auto-cmp')
 require('config/lsp')
 require('config/telescope')
+require('config/bufferline')
 
 
 vim.cmd([[

@@ -10,10 +10,13 @@ return require('packer').startup(
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
 
+    -- Tabs
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
+
     -- Finders
     use {
-  	'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  	requires = { {'nvim-lua/plenary.nvim'} }
+  	    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  	    requires = { {'nvim-lua/plenary.nvim'} }
     }
 
     use 'glepnir/dashboard-nvim' -- Nice dashboard

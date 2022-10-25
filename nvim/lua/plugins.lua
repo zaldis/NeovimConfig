@@ -4,6 +4,7 @@ return require('packer').startup(
     use 'neovim/nvim-lspconfig'  -- NVIM language server
 
     -- Auto complete
+    use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'

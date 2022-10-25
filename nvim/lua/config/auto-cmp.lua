@@ -5,7 +5,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
@@ -26,7 +26,7 @@ cmp.setup({
     sources = cmp.config.sources(
         {
             { name = 'nvim_lsp' },
-            { name = 'vsnip' }, -- For vsnip users.
+            { name = 'luasnip' },
         }, {
             { name = 'buffer' },
         }
@@ -60,6 +60,9 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig')['pyright'].setup {
+  capabilities = capabilities
+}
+require('lspconfig')['sumneko_lua'].setup {
   capabilities = capabilities
 }
 

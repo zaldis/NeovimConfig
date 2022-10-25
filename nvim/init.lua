@@ -5,6 +5,7 @@ require('config/lsp')
 require('config/telescope')
 require('config/bufferline')
 
+
 local opt = vim.opt                                -- to set options
 local cmd = vim.cmd                                -- to execute Vim commands e.g. cmd('pwd')
 
@@ -16,3 +17,4 @@ opt.shiftwidth = 4                                 -- Size of an indent
 opt.tabstop = 4                                    -- Number of spaces tabs count for
 opt.expandtab = true                               -- Use spaces instead of tabs
 cmd 'colorscheme gruvbox'
+

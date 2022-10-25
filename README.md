@@ -1,3 +1,9 @@
+<div align="center">
+    <a href="https://github.com/neovim/neovim/releases/tag/stable">
+      <img src="https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+    </a>
+</div>
+
 # NeovimConfig
 NeoVim configuration for Python Developers
 
@@ -18,6 +24,7 @@ To check NeoVim version just run the command: `nvim --version`
 1. Check that folder `~/.config/` exists or create new one
 2. Copy `nvim` file to the `~/.config/` folder
 3. Install [ripgrep](https://github.com/BurntSushi/ripgrep) for the filtering tools
+4. Install [lua-language-server](https://github.com/sumneko/lua-language-server/wiki/Getting-Started) to work with [Lua](https://www.lua.org/) LSP. May be helpful for configurations editing. Don't forget to update `PATH` variable.
 
 ### Install Plugins
 

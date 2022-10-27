@@ -66,3 +66,13 @@ python -m pip install pyright
 - **Searching by content:** `f` + `g`. Then enter the content pattern
 
 - **Searching by Nvim docs:** `f` + `h`. Then enter doc's topic
+
+- **Open/Close file tree:** `Space` + `t`.
+
+    - **Filter:** `f`
+
+    - **Create new file/folder:** `a`
+
+    - **Rename file/folder:** `r`
+
+    - **Delete file/folder:** `d`

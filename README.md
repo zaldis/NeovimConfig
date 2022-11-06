@@ -82,7 +82,7 @@ python -m pip install debugpy
     - **Rename file/folder:** `r`
     - **Delete file/folder:** `d`
 
-- **Debug:**
+- **Debug:** (read more details in [Wiki](https://github.com/zaldis/NeovimConfig/wiki/Debugger))
     - **Toggle breakpoint:** `Leader` + `d` + `b`
     - **Open REPL:** `Leader` + `d` + `r`
     - **Open scopes:** `Leader` + `d` + `s`

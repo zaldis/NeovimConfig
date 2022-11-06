@@ -25,7 +25,7 @@ dap.adapters.python = {
 }
 
 local getDjangoProgramFile = function ()
-    local folderName = vim.fn.input('Enter Django project folder> ')
+    local folderName = vim.fn.input('Enter relative path to Django project folder> ')
     return '${workspaceFolder}/' .. folderName .. '/manage.py'
 end
 

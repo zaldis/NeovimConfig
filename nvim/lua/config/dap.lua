@@ -24,6 +24,12 @@ dap.adapters.python = {
     args = { '-m', 'debugpy.adapter' },
 }
 
+dap.adapters.server = {
+    type = 'server',
+    host = 'localhost',
+    port = 5678,
+}
+
 local getDjangoProgramFile = function ()
     local folderName = vim.fn.input('Enter relative path to Django project folder> ')
     return '${workspaceFolder}/' .. folderName .. '/manage.py'
@@ -47,13 +53,18 @@ dap.configurations.python = {
         program = getDjangoProgramFile,
         args = {'runserver', '--noreload'}
     }, {
-        type = 'python',
+        type = 'server',
         request = 'attach',
         name = 'Attach debugger',
-        connect = {
-            host = 'localhost',
-            port = 5678,
-        },
+
+        port = 8000,
+        host = 'localhost',
+        pathMappings = {
+            {
+                localRoot = '${workspaceFolder}',
+                remoteRoot = '/app',
+            }
+        }
     }
 }
 

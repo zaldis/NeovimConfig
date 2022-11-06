@@ -10,7 +10,6 @@ require('config/dap')
 
 local opt = vim.opt                                -- to set options
 local cmd = vim.cmd                                -- to execute Vim commands e.g. cmd('pwd')
-local api = vim.api
 
 opt.number = true                                  -- Show line numbers
 opt.relativenumber = true                          -- Relative line numbers
@@ -28,11 +27,40 @@ local function map(mode, bind, command, opts)
     -- command: The command or existing keybind to customise
     local options = { noremap = true }
     if opts then
-        options = vim.tbl_extend("force", options, opts)
+        options = vim.tbl_extend('force', options, opts)
     end
-    api.nvim_set_keymap(mode, bind, command, options)
+    vim.keymap.set(mode, bind, command, options)
 end
 
 
-map("n", "<Space>t", ":NvimTreeFindFileToggle<CR>", { silent = true })
+map('n', '<leader>e', vim.diagnostic.open_float, { silent=true })
 
+
+-- Key maps for Nvim Tree
+map('n', '<leader>t', ':NvimTreeFindFileToggle<CR>', { silent=true })
+
+
+-- Key maps for DAP
+local widgets = require('dap.ui.widgets')
+local dap = require('dap')
+map('n', '<leader>db', dap.toggle_breakpoint, { silent=true })
+map('n', '<leader>dr', dap.repl.open, { silent=true })
+map('n', '<leader>ds', function ()
+    widgets.centered_float(widgets.scopes)
+end, {})
+map('n', '<leader>df', function ()
+    widgets.centered_float(widgets.frames)
+end, {})
+map('n', '<leader>de', require('dap.ui.widgets').hover, {})
+map('n', '<F5>', dap.continue, {})
+map('n', '<F10>', dap.step_over, {})
+map('n', '<F11>', dap.step_into, {})
+map('n', '<F12>', dap.step_out, {})
+
+
+-- Key maps for telescope
+local tele_builtin = require('telescope.builtin')
+map('n', 'ff', tele_builtin.find_files, {})
+map('n', 'fg', tele_builtin.live_grep, {})
+map('n', 'fb', tele_builtin.buffers, {})
+map('n', 'fh', tele_builtin.help_tags, {})

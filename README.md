@@ -65,9 +65,9 @@ python -m pip install debugpy
 
 - **Open documentation:** `Shift` + `k`. To jump into the documentation window just press again `Shift` + `k` (to close the documentation window call `q`)
 
-- **Check all issues in the line:** `Space` + `e`. To jump into the issues window just press again `Space` + `e` (to close the documentation window call `q`)
+- **Check all issues in the line:** `Leader` + `e`. To jump into the issues window just press again `Leader` + `e` (to close the documentation window call `q`)
 
-- **Rename a variable:** `Space` + `r` + `n`. Then write a new name and press `Enter`
+- **Rename a variable:** `Leader` + `r` + `n`. Then write a new name and press `Enter`
 
 - **Searching by file:** `f` + `f`. Then enter the file pattern
 
@@ -75,7 +75,7 @@ python -m pip install debugpy
 
 - **Searching by Nvim docs:** `f` + `h`. Then enter doc's topic
 
-- **Open/Close file tree:** `Space` + `t`
+- **Open/Close file tree:** `Leader` + `t`
     - **Toggle dot files:** `H`
     - **Filter:** `f`
     - **Create new file/folder:** `a`
@@ -88,7 +88,7 @@ python -m pip install debugpy
     - **Open scopes:** `Leader` + `d` + `s`
     - **Open call frames:** `Leader` + `d` + `f`
     - **Evaluate expression:** `Leader` + `d` + `e`
-    - **Run debugger/Continue:** `<F5>`
+    - **Run/Continue debugger:** `<F5>`
     - **Step over:** `<F10>`
     - **Step into:** `<F11>`
     - **Step out:** `<F12>`

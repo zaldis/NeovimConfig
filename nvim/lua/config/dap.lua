@@ -40,27 +40,9 @@ dap.configurations.python = {
 }
 
 
-local show_scopes = function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.scopes)
-end
+pcall(function()
+    require('dap.ext.vscode').load_launchjs('.nvim/launch.json')
+end)
 
-local show_frames = function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.frames)
-end
-
-vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, {})
-vim.keymap.set('n', '<leader>dr', dap.repl.open, {})
-vim.keymap.set('n', '<leader>ds', show_scopes, {})
-vim.keymap.set('n', '<leader>df', show_frames, {})
-vim.keymap.set('n', '<leader>de', require('dap.ui.widgets').hover, {})
-vim.keymap.set('n', '<F5>', dap.continue, {})
-vim.keymap.set('n', '<F10>', dap.step_over, {})
-vim.keymap.set('n', '<F11>', dap.step_into, {})
-vim.keymap.set('n', '<F12>', dap.step_out, {})
 
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
-
-
-require('dap.ext.vscode').load_launchjs('.nvim/launch.json')

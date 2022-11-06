@@ -5,6 +5,7 @@ require('config/lsp')
 require('config/telescope')
 require('config/bufferline')
 require('config/tree')
+require('config/dap')
 
 
 local opt = vim.opt                                -- to set options

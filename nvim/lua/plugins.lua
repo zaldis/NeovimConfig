@@ -3,6 +3,8 @@ return require('packer').startup(
     use 'wbthomason/packer.nvim'  -- Packer can manage itself
     use 'neovim/nvim-lspconfig'  -- NVIM language server
 
+    use 'mfussenegger/nvim-dap'  -- NVIM Debug Adapter Protocol
+
     -- Auto complete
     use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/cmp-nvim-lsp'

@@ -46,10 +46,18 @@ To apply static type checking for Python it's necessary to install [Pyright](htt
 python -m pip install pyright
 ```
 
+To run debugger it's necessary to install Python adapter [debugpy](https://github.com/microsoft/debugpy/) in your virtual environment
+
+```shell
+python -m pip install debugpy
+```
+
 
 ## Features
 
-- **Autocomplete is called automatically** when you run writing the code. To select the option just use up/down arrows + Enter
+**Note:** `Leader` is the `\` button.
+
+- **Autocomplete is called automatically** when you run writing the code. To select the option just use up/down arrows + `Enter`
 
 - **Go to definition:** `g` + `d`
 
@@ -57,9 +65,9 @@ python -m pip install pyright
 
 - **Open documentation:** `Shift` + `k`. To jump into the documentation window just press again `Shift` + `k` (to close the documentation window call `q`)
 
-- **Check all issues in the line:** `Space` + `e`. To jump into the issues window just press again `Space` + `e` (to close the documentation window call `q`)
+- **Check all issues in the line:** `Leader` + `e`. To jump into the issues window just press again `Leader` + `e` (to close the documentation window call `q`)
 
-- **Rename a variable:** `Space` + `r` + `n`. Then write a new name and press `Enter`
+- **Rename a variable:** `Leader` + `r` + `n`. Then write a new name and press `Enter`
 
 - **Searching by file:** `f` + `f`. Then enter the file pattern
 
@@ -67,12 +75,20 @@ python -m pip install pyright
 
 - **Searching by Nvim docs:** `f` + `h`. Then enter doc's topic
 
-- **Open/Close file tree:** `Space` + `t`.
-
+- **Open/Close file tree:** `Leader` + `t`
+    - **Toggle dot files:** `H`
     - **Filter:** `f`
-
     - **Create new file/folder:** `a`
-
     - **Rename file/folder:** `r`
-
     - **Delete file/folder:** `d`
+
+- **Debug:** (read more details in [Wiki](https://github.com/zaldis/NeovimConfig/wiki/NVIM-Debugger-Manual))
+    - **Toggle breakpoint:** `Leader` + `d` + `b`
+    - **Open REPL:** `Leader` + `d` + `r`
+    - **Open scopes:** `Leader` + `d` + `s`
+    - **Open call frames:** `Leader` + `d` + `f`
+    - **Evaluate expression:** `Leader` + `d` + `e`
+    - **Run/Continue debugger:** `<F5>`
+    - **Step over:** `<F10>`
+    - **Step into:** `<F11>`
+    - **Step out:** `<F12>`

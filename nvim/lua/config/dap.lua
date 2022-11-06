@@ -46,6 +46,14 @@ dap.configurations.python = {
 
         program = getDjangoProgramFile,
         args = {'runserver', '--noreload'}
+    }, {
+        type = 'python',
+        request = 'attach',
+        name = 'Attach debugger',
+        connect = {
+            host = 'localhost',
+            port = 5678,
+        },
     }
 }
 

@@ -10,6 +10,7 @@ require('config/dap')
 
 local opt = vim.opt                                -- to set options
 local cmd = vim.cmd                                -- to execute Vim commands e.g. cmd('pwd')
+local globals = vim.g                              -- to set vim globals
 
 opt.number = true                                  -- Show line numbers
 opt.relativenumber = true                          -- Relative line numbers
@@ -18,7 +19,9 @@ opt.background = 'dark'
 opt.shiftwidth = 4                                 -- Size of an indent
 opt.tabstop = 4                                    -- Number of spaces tabs count for
 opt.expandtab = true                               -- Use spaces instead of tabs
+globals.python3_host_prog = os.getenv("HOME") .. "/.config/nvim/venv/bin/python"
 cmd 'colorscheme gruvbox'
+
 
 
 local function map(mode, bind, command, opts)

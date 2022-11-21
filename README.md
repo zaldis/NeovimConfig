@@ -8,6 +8,12 @@
 NeoVim configuration for Python Developers
 
 
+## Installation
+
+There is `setup.sh` script in the `scripts/` folder.
+It setups all required NeoVim configurations and helps to check which libraries are not installed.
+
+
 ## Requirements
 
 ### Install the latest neovim

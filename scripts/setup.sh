@@ -3,6 +3,10 @@
 FILE_PATH=$(realpath -- $0)
 CURR_DIR=$(dirname -- $FILE_PATH)
 
+NVIM_CONFIG_DIR="${HOME}/.config/nvim"
+NVIM_PYTHON="$NVIM_CONFIG_DIR/venv/bin/python"
+
+
 #######################################################################
 #                         Color constants                             #
 #######################################################################
@@ -16,10 +20,10 @@ NC='\033[0m' # No color
 #                         Check NeoVim is setup                       #
 #######################################################################
 echo ""
-NVIM_PATHES=$(whereis nvim)
+nvim_pathes=$(whereis nvim)
 is_nvim_setup=$?
 if [[ $is_nvim_setup ]]; then
-    echo -e "${GREEN}[OK]${NC} NeoVim is found: ${NVIM_PATHES}"
+    echo -e "${GREEN}[OK]${NC} NeoVim is found: ${nvim_pathes}"
 else
     echo -e "${RED}[ERROR] NeoVim is not found.${NC}"
     echo "Please, install nvim editor (https://github.com/neovim/neovim) and run the script again"
@@ -45,7 +49,6 @@ fi
 #              Setup Python virtual environment for NeoVim            #
 #######################################################################
 echo ""
-NVIM_CONFIG_DIR="${HOME}/.config/nvim"
 if [[ ! -d $NVIM_CONFIG_DIR ]]; then
     echo "Creating soft link for nvim folder -> $NVIM_CONFIG_DIR"
     ln -s "${CURR_DIR}/../nvim" $NVIM_CONFIG_DIR
@@ -74,7 +77,6 @@ else
     echo -e "${GREEN}[OK]${NC} NeoVim virtual environment has alread existed"
 fi
 
-NVIM_PYTHON="$NVIM_CONFIG_DIR/venv/bin/python"
 
 
 #######################################################################

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+FILE_PATH=$(realpath -- $0)
+CURR_DIR=$(dirname -- $FILE_PATH)
+
 #######################################################################
 #                         Color constants                             #
 #######################################################################
@@ -10,8 +13,23 @@ NC='\033[0m' # No color
 
 
 #######################################################################
+#                         Check NeoVim is setup                       #
+#######################################################################
+echo ""
+NVIM_PATHES=$(whereis nvim)
+is_nvim_setup=$?
+if [[ $is_nvim_setup ]]; then
+    echo -e "${GREEN}[OK]${NC} NeoVim is found: ${NVIM_PATHES}"
+else
+    echo -e "${RED}[ERROR] NeoVim is not found.${NC}"
+    echo "Please, install nvim editor (https://github.com/neovim/neovim) and run the script again"
+fi
+
+
+#######################################################################
 #                         Setup python interpreter                    #
 #######################################################################
+echo ""
 read -p "Enter the system Python path (full path or alias): " SYS_PYTHON
 py_version=`${SYS_PYTHON} --version`
 if [[ $py_version ]]; then
@@ -26,17 +44,25 @@ fi
 #######################################################################
 #              Setup Python virtual environment for NeoVim            #
 #######################################################################
+echo ""
 NVIM_CONFIG_DIR="${HOME}/.config/nvim"
 if [[ ! -d $NVIM_CONFIG_DIR ]]; then
-    echo -e "\n${RED}[ERROR] There is no NeoVim config folder: ${NVIM_CONFIG_DIR}.${NC}"
-    echo "Please copy nvim folder to the ${HOME}/.config/"
-    exit 1
+    echo "Creating soft link for nvim folder -> $NVIM_CONFIG_DIR"
+    ln -s "${CURR_DIR}/../nvim" $NVIM_CONFIG_DIR
+    is_nvim_config_linked=$?
+    if [[ $is_nvim_config_linked ]]; then
+        echo -e "${GREEN}[OK]${NC} Nvim config was linked to ${HOME}/.config/nvim"
+    else
+        echo -e "${RED}[ERROR] Some problem with linking the NeoVim config.${NC}"
+        echo "Please, check Issues section on GitHub and create new one if neccessary"
+    fi
 else
-    echo -e "\n${GREEN}[OK]${NC} NeoVim config folder is detected: ${NVIM_CONFIG_DIR}"
+    echo -e "${GREEN}[OK]${NC} NeoVim config folder is detected: ${NVIM_CONFIG_DIR}"
 fi
 
+echo ""
 if [[ ! -d "$NVIM_CONFIG_DIR/venv" ]]; then
-    echo -e "\nCreating new NeoVim virtual environment: ${NVIM_CONFIG_DIR}/venv/"
+    echo -e "Creating new NeoVim virtual environment: ${NVIM_CONFIG_DIR}/venv/"
     $SYS_PYTHON -m venv "${NVIM_CONFIG_DIR}/venv"
     is_venv_created=$?
     if [ $is_venv_created -eq 0 ]; then
@@ -45,7 +71,7 @@ if [[ ! -d "$NVIM_CONFIG_DIR/venv" ]]; then
         echo -e "${RED}[ERROR]${NC} Some issue is happen"
     fi
 else
-    echo -e "\n${GREEN}[OK]${NC} NeoVim virtual environment has alread existed"
+    echo -e "${GREEN}[OK]${NC} NeoVim virtual environment has alread existed"
 fi
 
 NVIM_PYTHON="$NVIM_CONFIG_DIR/venv/bin/python"

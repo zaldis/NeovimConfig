@@ -20,6 +20,7 @@ opt.shiftwidth = 4                                 -- Size of an indent
 opt.tabstop = 4                                    -- Number of spaces tabs count for
 opt.expandtab = true                               -- Use spaces instead of tabs
 globals.python3_host_prog = os.getenv("HOME") .. "/.config/nvim/venv/bin/python"
+cmd 'set clipboard+=unnamedplus'
 cmd 'colorscheme gruvbox'
 
 

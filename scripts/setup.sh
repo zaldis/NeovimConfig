@@ -27,6 +27,26 @@ if [[ $is_nvim_setup ]]; then
 else
     echo -e "${RED}[ERROR] NeoVim is not found.${NC}"
     echo "Please, install nvim editor (https://github.com/neovim/neovim) and run the script again"
+    exit 1
+fi
+
+
+#######################################################################
+#                         Setup NeoVim config directory               #
+#######################################################################
+echo ""
+if [[ ! -d $NVIM_CONFIG_DIR ]]; then
+    echo "Creating soft link for nvim folder -> $NVIM_CONFIG_DIR"
+    ln -s "${CURR_DIR}/../nvim" $NVIM_CONFIG_DIR
+    is_nvim_config_linked=$?
+    if [[ $is_nvim_config_linked ]]; then
+        echo -e "${GREEN}[OK]${NC} Nvim config was linked to ${HOME}/.config/nvim"
+    else
+        echo -e "${RED}[ERROR] Some problem with linking the NeoVim config.${NC}"
+        echo "Please, check Issues section on GitHub and create new one if neccessary"
+    fi
+else
+    echo -e "${GREEN}[OK]${NC} NeoVim config folder is detected: ${NVIM_CONFIG_DIR}"
 fi
 
 
@@ -49,21 +69,6 @@ fi
 #              Setup Python virtual environment for NeoVim            #
 #######################################################################
 echo ""
-if [[ ! -d $NVIM_CONFIG_DIR ]]; then
-    echo "Creating soft link for nvim folder -> $NVIM_CONFIG_DIR"
-    ln -s "${CURR_DIR}/../nvim" $NVIM_CONFIG_DIR
-    is_nvim_config_linked=$?
-    if [[ $is_nvim_config_linked ]]; then
-        echo -e "${GREEN}[OK]${NC} Nvim config was linked to ${HOME}/.config/nvim"
-    else
-        echo -e "${RED}[ERROR] Some problem with linking the NeoVim config.${NC}"
-        echo "Please, check Issues section on GitHub and create new one if neccessary"
-    fi
-else
-    echo -e "${GREEN}[OK]${NC} NeoVim config folder is detected: ${NVIM_CONFIG_DIR}"
-fi
-
-echo ""
 if [[ ! -d "$NVIM_CONFIG_DIR/venv" ]]; then
     echo -e "Creating new NeoVim virtual environment: ${NVIM_CONFIG_DIR}/venv/"
     $SYS_PYTHON -m venv "${NVIM_CONFIG_DIR}/venv"
@@ -76,7 +81,6 @@ if [[ ! -d "$NVIM_CONFIG_DIR/venv" ]]; then
 else
     echo -e "${GREEN}[OK]${NC} NeoVim virtual environment has alread existed"
 fi
-
 
 
 #######################################################################

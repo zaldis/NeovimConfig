@@ -132,5 +132,53 @@ setup_py_module "wheel"
 echo
 setup_py_module "pynvim"
 
+
+#######################################################################
+#              Check Clipboard modules                                #
+#######################################################################
+echo -e "\n${PURPLE}Check clipboard modules...${NC}" 
+is_clipboard_setup=1
+
+command -v pbcopy
+is_pbcopy_installed=$?
+command -v pbpaste
+is_pbpaste_installed=$?
+if [[ $is_pbcopy_installed -eq 0 && $is_pbpaste_installed -eq 0 ]]; then
+    is_clipboard_setup=0
+    echo -e "${GREEN}[OK]${NC} Found clipboard modules for MacOS"
+fi
+
+command -v wl-copy
+is_wlcopy_installed=$?
+command -v wl-paste
+is_wlpaste_installed=$?
+if [[ $is_wlcopy_installed -eq 0 && $is_wlpaste_installed -eq 0 ]]; then
+    is_clipboard_setup=0
+    echo -e "${GREEN}[OK]${NC} Found clipboard modules for Linux Wayland UI"
+fi
+
+command -v xclip
+is_xclip_installed=$?
+if [[ $is_xclip_installed -eq 0 ]]; then
+    is_clipboard_setup=0
+    echo -e "${GREEN}[OK]${NC} Found clipboard modules for Linux XOrg UI"
+fi
+    
+command -v win32yank.exe
+is_win32yank_installed=$?
+if [[ $is_win32yank_installed -eq 0 ]]; then
+    is_clipboard_setup=0
+    echo -e "${GREEN}[OK]${NC} Found clipboard modules for Windows WSL"
+fi
+
+if [[ $is_clipboard_setup -eq 1 ]]; then
+    echo -e "${RED}[ERROR]${NC} Clipboard modules are not found. Setup them please and run the script again"
+    echo "-> pbcopy, pbpaste for MacOS"
+    echo "-> wl-copy, wl-paste for Linux on Wayland"
+    echo "-> xclip for Linux on XOrg"
+    echo "-> win32yank for Linux on Windows WSL"
+    exit 1
+fi
+
 # echo "Running NeoVim Health Check..."
 # nvim -c ":checkhealth"

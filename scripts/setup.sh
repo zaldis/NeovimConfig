@@ -1,12 +1,5 @@
 #!/bin/bash
 
-FILE_PATH=$(realpath -- $0)
-CURR_DIR=$(dirname -- $FILE_PATH)
-
-NVIM_CONFIG_DIR="${HOME}/.config/nvim"
-NVIM_PYTHON="$NVIM_CONFIG_DIR/venv/bin/python"
-
-
 #######################################################################
 #                         Color constants                             #
 #######################################################################
@@ -17,10 +10,29 @@ NC='\033[0m' # No color
 
 
 #######################################################################
+#                         Environment variables                       #
+#######################################################################
+command -v realpath
+is_realpath_setup=$?
+if [[ $is_realpath_setup -ne 0 ]]; then
+    echo -e "${RED}[ERROR]${NC} realpath lib has to be installed as coreutil function"
+    echo "Please install following lib: realpath"
+    echo "Read more about core utils: https://www.gnu.org/software/coreutils/manual/"
+    exit 1
+fi
+
+FILE_PATH=$(realpath -- $0)
+CURR_DIR=$(dirname -- $FILE_PATH)
+
+NVIM_CONFIG_DIR="${HOME}/.config/nvim"
+NVIM_PYTHON="$NVIM_CONFIG_DIR/venv/bin/python"
+
+
+#######################################################################
 #                         Check NeoVim is setup                       #
 #######################################################################
 echo ""
-nvim_pathes=$(whereis nvim)
+command -v nvim
 is_nvim_setup=$?
 if [[ $is_nvim_setup ]]; then
     echo -e "${GREEN}[OK]${NC} NeoVim is found: ${nvim_pathes}"
@@ -172,7 +184,7 @@ if [[ $is_win32yank_installed -eq 0 ]]; then
 fi
 
 if [[ $is_clipboard_setup -eq 1 ]]; then
-    echo -e "${RED}[ERROR]${NC} Clipboard modules are not found. Setup them please and run the script again"
+    echo -e "${RED}[ERROR] Clipboard modules are not found. Setup them please and run the script again.${NC}"
     echo "-> pbcopy, pbpaste for MacOS"
     echo "-> wl-copy, wl-paste for Linux on Wayland"
     echo "-> xclip for Linux on XOrg"
@@ -180,5 +192,24 @@ if [[ $is_clipboard_setup -eq 1 ]]; then
     exit 1
 fi
 
+
+#######################################################################
+#              Check Telescope modules                                #
+#######################################################################
+command -v fd
+is_fd_installed=$?
+if [[ $is_fd_installed -eq 0 ]]; then
+    echo -e "${GREEN}[OK]${NC} Found fd lib for Telescope"
+else
+    echo -e "${RED}[ERROR] fd lib is not installed.${NC}"
+    echo "Install fd lib and run the setup script again: https://github.com/sharkdp/fd"
+fi
+
+
+#######################################################################
+#              Sync NeoVim plugins                                    #
+#######################################################################
+echo -e "${PURPLE}Sync NeoVim plugins...${NC}"
+nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
 # echo "Running NeoVim Health Check..."
 # nvim -c ":checkhealth"

@@ -25,10 +25,18 @@ return require('packer').startup(
     -- Tabs
     use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
 
+    -- Code parsers
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
     -- Finders
     use {
   	    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  	    requires = { {'nvim-lua/plenary.nvim'} }
+  	    requires = {
+            {'nvim-lua/plenary.nvim'},
+        }
     }
 
     use 'glepnir/dashboard-nvim' -- Nice dashboard

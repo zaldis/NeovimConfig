@@ -6,6 +6,7 @@ require('config/telescope')
 require('config/bufferline')
 require('config/tree')
 require('config/dap')
+require('config/gruvbox')
 
 
 local opt = vim.opt                                -- to set options

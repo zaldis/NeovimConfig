@@ -15,14 +15,14 @@ CURR_DIR="$(
 . $CURR_DIR/utils.sh
 
 setup_dependencies() {
-    # TODO add installation for necessary OS platforms
     local os_name=$(get_os_name)
+
     if [ $os_name = "UBUNTU" ]; then
         . $CURR_DIR/deps/ubuntu.sh
     fi
 
     if [ $os_name = "OSX" ]; then
-        echo "Installing dependencies for MacOS"
+        . $CURR_DIR/deps/macos.sh
     fi
 }
 setup_dependencies

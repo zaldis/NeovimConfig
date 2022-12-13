@@ -9,7 +9,7 @@ Requirements:
 - python3
 - pip3
 - venv
-- fdfind
+- fd
 - pbcopy
 - pbpaste
 - neovim
@@ -30,6 +30,6 @@ validate_command \
     "nvim" \
     "Neovim" \
     "https://github.com/neovim/neovim/wiki/Installing-Neovim"
-validate_command "fdfind" "fd" "https://github.com/sharkdp/fd"
+validate_command "fd" "fd" "https://github.com/sharkdp/fd"
 validate_command "pbcopy" "pbcopy" "https://ss64.com/osx/pbcopy.html"
 validate_command "pbpaste" "pbpaste" "https://ss64.com/osx/pbpaste.html"

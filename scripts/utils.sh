@@ -103,7 +103,7 @@ start_spinner() {
 export -f start_spinner
 
 stop_spinner() {
-    disown $spinner_pid
+    disown -r $spinner_pid
     kill -9 $spinner_pid && wait
     set -m  # enable job control
     echo -en "\033[2K\r"

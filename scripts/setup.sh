@@ -10,9 +10,9 @@
 set -e  # Exit immediately if a command exits with a non-zero status
 clear
 
-NVIM_CONFIG_DEBUG="${NVIM_CONFIG_DEBUG:-'False'}"
+NVIM_CONFIG_DEBUG="${NVIM_CONFIG_DEBUG:-"False"}"
 
-if [ $NVIM_CONFIG_DEBUG = 'False' ]; then
+if [ "$NVIM_CONFIG_DEBUG" = "False" ]; then
     initial_current_dir=$(pwd -P)
     git clone --depth=1 https://github.com/zaldis/NeovimConfig.git &>/dev/null
     cd ./NeovimConfig/scripts
@@ -172,7 +172,9 @@ stop_spinner
 #######################################################################
 #              Clear downloaded setup files                           #
 #######################################################################
-cd $initial_current_dir
-rm -rf NeovimConfig
+if [ "$NVIM_CONFIG_DEBUG" = "False" ]; then
+    cd $initial_current_dir
+    rm -rf NeovimConfig
+fi
 
 success "Done"

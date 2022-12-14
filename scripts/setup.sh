@@ -152,7 +152,7 @@ install_py_package_gui "$NVIM_PYTHON" "pynvim"
 step "Install NeoVim plugins..."
 install_packer_gui
 start_spinner "Installing NeoVim plagins"
-nvim --headless -c "sleep 2" -c "autocmd User PackerComplete quitall" -c "PackerSync"
+nvim --headless -c "sleep 2" -c "autocmd User PackerComplete quitall" -c "PackerSync" 2>/dev/null
 stop_spinner
 
 success "Done"

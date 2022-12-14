@@ -14,7 +14,7 @@ NVIM_CONFIG_DEBUG="${NVIM_CONFIG_DEBUG:-"False"}"
 
 if [ "$NVIM_CONFIG_DEBUG" = "False" ]; then
     initial_current_dir=$(pwd -P)
-    git clone --depth=1 https://github.com/zaldis/NeovimConfig.git &>/dev/null
+    git clone -b main --depth=1 https://github.com/zaldis/NeovimConfig.git &>/dev/null
     cd ./NeovimConfig/scripts
     CURR_DIR="$(pwd -P)"
 else
@@ -113,7 +113,7 @@ trap cleanup EXIT
 #                         Setup python interpreter                    #
 #######################################################################
 echo ""
-read -rep "Enter the system Python path or press ENTER to keep default [$PY_PATH]: " SYS_PYTHON
+read -rep "Enter the system Python path or press ENTER to keep default [$PY_PATH]: " SYS_PYTHON </dev/tty
 SYS_PYTHON="${SYS_PYTHON:-${PY_PATH}}"
 info "Chosen Python3 path: $SYS_PYTHON"
 py_version=$(${SYS_PYTHON} --version)

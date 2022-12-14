@@ -19,6 +19,15 @@ curl -s https://raw.githubusercontent.com/zaldis/NeovimConfig/main/scripts/setup
 For WSL clipboard please check the [Wiki](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl)
 
 
+## Debugging
+
+To run the script locally just call:
+
+```shell
+export NVIM_CONFIG_DEBUG && {the path to setup.sh}
+```
+
+
 ## Auxiliary info
 
 To check that the module is installed just call next command:

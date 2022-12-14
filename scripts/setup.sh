@@ -2,16 +2,29 @@
 
 # to run latest version of this script use command below:
 # curl -s https://raw.githubusercontent.com/zaldis/NeovimConfig/main/scripts/setup.sh | bash
+#
+# to run locally
+# export NVIM_CONFIG_DEBUG=True && setup.sh
 
 
 set -e  # Exit immediately if a command exits with a non-zero status
 clear
 
-CURR_DIR="$(
-    cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
-    pwd -P
-)"
-# Load utils functions
+NVIM_CONFIG_DEBUG="${NVIM_CONFIG_DEBUG:-'False'}"
+
+if [ $NVIM_CONFIG_DEBUG = 'False' ]; then
+    initial_current_dir=$(pwd -P)
+    git clone --depth=1 https://github.com/zaldis/NeovimConfig.git &>/dev/null
+    cd ./NeovimConfig/scripts
+    CURR_DIR="$(pwd -P)"
+else
+    CURR_DIR="$(
+        cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
+        pwd -P
+    )"
+fi
+
+# Load local utils functions
 . $CURR_DIR/utils.sh
 
 setup_dependencies() {
@@ -154,5 +167,12 @@ install_packer_gui
 start_spinner "Installing NeoVim plagins"
 nvim --headless -c "sleep 2" -c "autocmd User PackerComplete quitall" -c "PackerSync" 2>/dev/null
 stop_spinner
+
+
+#######################################################################
+#              Clear downloaded setup files                           #
+#######################################################################
+cd $initial_current_dir
+rm -rf NeovimConfig
 
 success "Done"

@@ -92,8 +92,8 @@ start_spinner() {
     local spinner_assets=('◜' '◝' '◞' '◟')
     { 
         while :; do 
-            for X in ${spinner_assets[@]}; do
-                echo -en "\b$X"
+            for asset in ${spinner_assets[@]}; do
+                echo -en "\b$asset"
                 sleep $asset_delay
             done; 
         done & 
@@ -103,7 +103,7 @@ start_spinner() {
 export -f start_spinner
 
 stop_spinner() {
-    disown $spinner_pid && kill -9 $spinner_pid && wait
+    { kill -9 $spinner_pid && wait; } 2>/dev/null
     set -m  # enable job control
     echo -en "\033[2K\r"
     tput cnorm  # display cursor

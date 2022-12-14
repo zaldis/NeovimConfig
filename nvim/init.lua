@@ -6,6 +6,7 @@ require('config/telescope')
 require('config/bufferline')
 require('config/tree')
 require('config/dap')
+require('config/gruvbox')
 
 
 local opt = vim.opt                                -- to set options
@@ -27,7 +28,7 @@ cmd 'colorscheme gruvbox'
 
 local function map(mode, bind, command, opts)
     -- mode: Vim Normal/Insert mode
-    -- bind: The custom keybinds 
+    -- bind: The custom keybinds
     -- command: The command or existing keybind to customise
     local options = { noremap = true }
     if opts then

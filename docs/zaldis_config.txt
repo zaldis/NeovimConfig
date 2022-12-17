@@ -1,0 +1,94 @@
+*zaldis_config.txt*                                   Zaldis config for NeoVim
+
+
+		  CONFIG MANUAL FOR PYTHON DEVS    by Denys Zaluzhnyi
+					           and Artur Kulik
+
+
+Type |gO| to see the table of contents.
+Type |CTRL-]| for navigating through the links.
+
+
+==============================================================================
+CONTENTS                                              *zaldis_config-contents*
+
+Abstract                                              |zaldis_config_abstract|
+  Introduction            |zaldis_config_introduction|
+  Advantages              |zaldis_config_advantages|
+Features                                              |zaldis_config_features|
+  Autocomplete            |zaldis_autocomplete|
+  Go to definition        |zaldis_go_to_definition|
+  Go to references        |zaldis_go_to_references|
+  Open documentation      |zaldis_documentation|
+
+==============================================================================
+Abstract                                              *zaldis_config_abstract*
+
+Introduction~
+*zaldis_config_introduction*
+
+To minimize onboarding steps for Python devs with NeoVim editor it was
+developed custom config. The config contains all necessary features for common
+tasks (such as autocomplete, go to definition, debugging and so on).
+
+
+Advantages~
+*zaldis_config_advantages*
+
+There are few improtant advantages in NeoVim against other editors:
+
+ * Super fast (critical for huge projects/files) 
+ 
+ * Ability to run from the terminal (editing data in the containers)
+ 
+ * Setup in one command with all necessary plugins for daily tasks
+
+
+==============================================================================
+Features                                              *zaldis_config_features*
+
+Here you can read all about features are allowed by the config.
+
+Autocomplete~
+*zaldis_autocomplete*
+
+Works in the same way as other editors do. To select necessary option it's
+possible to use arrows. Then press <Enter> to confirm.
+
+Go to definition~
+*zaldis_go_to_definition*
+
+Shortcut: |gd|
+Creates new buffer and scroll the window to the definition content.
+
+Go to references~
+*zaldis_go_to_references*
+
+Shortcut: |gr|
+Creates pop-up buffer with list of all found references. Select necessary
+reference with motion commands. Then press <Enter> to confirm.
+
+Open documentation~
+*zaldis_documentation*
+
+Shortcut: |SHIFT-k|
+Creates pop-up window with the documentation for the undersline operator. To
+jump into the documentation (for scrolling) just press again |SHIFT-k|. To
+close documentation after jumpint there, press |q|.
+
+Check all issues in the line~
+
+Rename a variable~
+
+Searching by file~
+
+Searching by content~
+
+Searching by NeoVim docs~
+
+Files tree~
+
+Debugging~
+
+
+vim:tw=78:ts=8:noet:ft=help:norl:

@@ -32,7 +32,13 @@ db.custom_center = {
         shortcut = 'NULL',
         action = ':new',
     },
-    { 
+    {
+        icon = '\u{1f9ae} ',
+        desc = 'Open manual                 ',
+        shortcut = 'NULL',
+        action = ':help zaldis_config.txt',
+    },
+    {
         icon = '\u{23FB} ',
         desc = 'Quit                        ',
         shortcut = 'NULL',

@@ -20,6 +20,13 @@ Features                                              |zaldis_config_features|
   Go to definition        |zaldis_go_to_definition|
   Go to references        |zaldis_go_to_references|
   Open documentation      |zaldis_documentation|
+  All messages		  |zaldis_messages|
+  Rename variable         |zaldis_rename|
+  Search files            |zaldis_search_files|
+  Search code             |zaldis_search_code|
+  Search help tags        |zaldis_search_help_tags|
+  Files tree		  |zaldis_files_tree|
+  Debugging               |zaldis_debugging|
 
 ==============================================================================
 Abstract                                              *zaldis_config_abstract*
@@ -76,19 +83,70 @@ Creates pop-up window with the documentation for the undersline operator. To
 jump into the documentation (for scrolling) just press again |SHIFT-k|. To
 close documentation after jumpint there, press |q|.
 
-Check all issues in the line~
+Check all messages in the line~
+*zaldis_messages*
+
+Shortcut: |LEADER-e|
+One line may contains several messages (for example invalid operator and extra
+space in the end). To optimize space NeoVim shows only one error/warn, hence
+another errors are hidden. The feature helps to display all errors in the pop-up window.
 
 Rename a variable~
+*zaldis_rename*
+
+Shortcut: |LEADER-r-n|
+Displays window with the hint to enter new name for the variable. When new name is
+passed and <Enter> button is pressed all variable entries will be renamed.
 
 Searching by file~
+*zaldis_search_files*
+
+Shortcut: |ff|
+Creates new pop-up window with list of all files that are passed the pattern.
 
 Searching by content~
+*zaldis_search_code*
+
+Shortcut: |fg|
+Creates new pop-up window with list of all code lines that are passed the pattern.
 
 Searching by NeoVim docs~
+*zaldis_search_help_tags*
+
+Shortcut: |fh|
+Creates new pop-up window with list of all help tags that are passed the pattern.
 
 Files tree~
+*zaldis_files_tree*
+
+Shortcut: |LEADER-t|
+
+Creates new window from the left side with files tree.
+Inside this window following commands are allowed:
+
+  * |q| or |LEADER-t| to close the file tree window
+  * |SHIFT-h| to toggle hidden files
+  * |f| to filter by files tree
+  * |a| to create new file/folder
+  * |r| to rename or move file/folder
+  * |d| to delete file/folder
 
 Debugging~
+*zaldis_debugging*
+
+Debugging process contains following abilities:
+
+    * |LEADER-db| to toggle breakpoint
+    * <F5> to run/continue debug process
+    * <F10> to step over
+    * <F11> to step into
+    * <F12> to step out
+    * |LEADER-dr| to open debug REPL session
+    * |LEADER-ds| to display scopes
+    * |LEADER-df| to display call frames
+    * |LEADER-de| to evaluate the expression under the cursor 
+
+For more details read the wiki: https://github.com/zaldis/NeovimConfig/wiki/NVIM-Debugger-Manual
 
 
 vim:tw=78:ts=8:noet:ft=help:norl:

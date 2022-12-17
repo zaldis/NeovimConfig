@@ -49,6 +49,7 @@ OS_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 NVIM_CONFIG_DIR="$OS_CONFIG_DIR/nvim"
 NVIM_VENV_DIR="$NVIM_CONFIG_DIR/venv"
 NVIM_PYTHON="$NVIM_VENV_DIR/bin/python"
+NVIM_DOC_DIR="$HOME/.local/share/nvim/site/doc"
 NVIM_PACKER_DIR="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 
@@ -167,6 +168,15 @@ install_packer_gui
 start_spinner "Installing NeoVim plagins"
 nvim --headless -c "sleep 2" -c "autocmd User PackerComplete quitall" -c "PackerSync" 2>/dev/null
 stop_spinner
+
+
+#######################################################################
+#              Sync config docs                                       #
+#######################################################################
+info "Setup manuals..."
+mkdir -p "$NVIM_DOC_DIR"
+cp -f $CURR_DIR/../docs/* $NVIM_DOC_DIR
+nvim --headless -c "helptags $NVIM_DOC_DIR" -c "quitall" 2>/dev/null
 
 
 #######################################################################

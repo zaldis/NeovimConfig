@@ -40,3 +40,6 @@ checkshell: ## check Shell files
 
 checklua: ## check Lua files
 	@luacheck --formatter plain nvim
+
+setup: ## install NeoVim config
+	export NVIM_CONFIG_DEBUG=True && ./scripts/setup.sh

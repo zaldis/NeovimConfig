@@ -46,16 +46,20 @@ return require('packer').startup(
 
     -- Finders
     use {
-  	    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  	    'nvim-telescope/telescope.nvim', tag = '0.1.4',
   	    requires = {
-            {'nvim-lua/plenary.nvim'},
+            {'nvim-lua/plenary.nvim' },
         }
     }
 
-    use 'glepnir/dashboard-nvim' -- Nice dashboard
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
 
     -- Themes
-    use 'ellisonleao/gruvbox.nvim'
+    use { 'ellisonleao/gruvbox.nvim' }
     if packer_bootstrap then
         require('packer').sync()
     end

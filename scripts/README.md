@@ -26,6 +26,11 @@ To run the script locally just call:
 ```shell
 export NVIM_CONFIG_DEBUG && {the path to setup.sh}
 ```
+or
+
+```shell
+make setup
+```
 
 
 ## Auxiliary info
@@ -55,9 +60,11 @@ To check NeoVim version just run the command: `nvim --version`
 ### Prepare neovim configurations
 
 1. Check that folder `~/.config/` exists or create new one
-2. Copy `nvim` file to the `~/.config/` folder
-3. Install [ripgrep](https://github.com/BurntSushi/ripgrep) for the filtering tools
-4. Install [lua-language-server](https://github.com/sumneko/lua-language-server/wiki/Getting-Started) to work with [Lua](https://www.lua.org/) LSP. May be helpful for configurations editing. Don't forget to update `PATH` variable.
+1. Copy `nvim` file to the `~/.config/` folder
+1. Install [ripgrep](https://github.com/BurntSushi/ripgrep) for the filtering tools
+1. Install [lua-language-server](https://github.com/LuaLS/lua-language-server) to work with [Lua](https://www.lua.org/) LSP. May be helpful for configurations editing. Don't forget to update `PATH` variable.
+1. Install [vscode-language-servers](https://github.com/hrsh7th/vscode-langservers-extracted) to work with HTML and CSS.
+1. Install [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server) to work with JS, TS.
 
 ### Install Plugins
 

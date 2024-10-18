@@ -24,7 +24,7 @@ For WSL clipboard please check the [Wiki](https://github.com/neovim/neovim/wiki/
 To run the script locally just call:
 
 ```shell
-export NVIM_CONFIG_DEBUG && {the path to setup.sh}
+export NVIM_CONFIG_DEBUG=true && {the path to setup.sh}
 ```
 or
 

@@ -58,13 +58,6 @@ require('lspconfig').lua_ls.setup {
   flags = lsp_flags,
 }
 
-
-require('lspconfig').tsserver.setup{
-  on_attach = custom_lsp_attach,
-  flags = lsp_flags,
-}
-
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').html.setup {
@@ -77,4 +70,9 @@ require('lspconfig').cssls.setup {
   capabilities = capabilities,
   on_attach = custom_lsp_attach,
   flags = lsp_flags,
+}
+
+require'lspconfig'.jdtls.setup{
+    on_attach = custom_lsp_attach,
+    flags = lsp_flags,
 }

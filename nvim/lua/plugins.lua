@@ -13,10 +13,13 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
   function(use)
-    use 'wbthomason/packer.nvim'  -- Packer can manage itself
-    use 'neovim/nvim-lspconfig'  -- NVIM language server
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-    use 'mfussenegger/nvim-dap'  -- NVIM Debug Adapter Protocol
+    -- NVIM language server default configs
+    use 'neovim/nvim-lspconfig'
+    -- NVIM Debug Adapter Protocol
+    use 'mfussenegger/nvim-dap'
 
     -- Auto complete
     use 'L3MON4D3/LuaSnip'
@@ -32,11 +35,10 @@ return require('packer').startup(
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
     -- Tabs
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
     -- Code parsers
     use {
@@ -50,12 +52,6 @@ return require('packer').startup(
   	    requires = {
             {'nvim-lua/plenary.nvim' },
         }
-    }
-
-    use {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        requires = {'nvim-tree/nvim-web-devicons'}
     }
 
     -- Themes
